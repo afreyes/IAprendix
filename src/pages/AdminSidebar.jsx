@@ -48,7 +48,7 @@ function AdminSidebar() {
             <ul>
               <li>
                 <Link
-                  to="/RegisterTest"
+                  to="/admin/RegisterTest"
                   className="flex items-center gap-4 py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors text-white"
                 >
                   <RiSettings3Line className="text-primary" /> Registrar Test

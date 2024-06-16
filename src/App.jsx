@@ -15,6 +15,7 @@ import LandingPage from "./pages/LandingPage";
 import TestVAK from './components/TestVAK';
 import UserCourses from './components/UserCourses';
 import RegisterTest from './components/RegisterTest'; 
+import AdminDashboard from './pages/AdminDashboard';
 
 // Importamos los componentes de cursos y estudiantes
 import CoursesList from './components/courses/CoursesList';
@@ -42,7 +43,6 @@ const ProtectedLayout = ({ children }) => {
 
   return (
     <div className="flex h-screen">
-      <p>hola mundo</p>
       {user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
       <div className="flex-1 flex flex-col">
         <Header />
@@ -72,7 +72,7 @@ function App() {
               <Outlet />
             </ProtectedLayout>
           }>
-            <Route path="AdminSidebar" element={<AdminSidebar />} />
+            <Route path="AdminSidebar" element={<AdminDashboard />} />
             <Route path="RegisterTest" element={<RegisterTest />} />
             <Route path="courses/*" element={
               <>

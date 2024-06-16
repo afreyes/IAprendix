@@ -19,7 +19,7 @@ function AdminSidebar() {
   const { user } = useContext(AuthContext);
 
   // Verificar si el usuario tiene el rol de "admin"
-  const isAdmin = user && user.role && user.data.user.role.name_role === 'admin';
+  const isAdmin = user && user.role && user.role.name_role === 'admin';
 
   if (!isAdmin) {
     return null; // No mostrar el sidebar si no es admin

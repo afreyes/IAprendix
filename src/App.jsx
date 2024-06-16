@@ -28,6 +28,7 @@ import UserList from './components/student/UserList';
 const ProtectedLayout = ({ children }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  console.log("nuevo user",user)
 
   useEffect(() => {
     if (!user) {
@@ -35,13 +36,14 @@ const ProtectedLayout = ({ children }) => {
     }
   }, [user, navigate]);
 
-  if (!user || !user.data || !user.data.user || !user.data.user.role) {
+  if (!user || !user.role.name_role) {
     return null; // Or some loading indicator
   }
 
   return (
     <div className="flex h-screen">
-      {user.data.user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
+      <p>hola mundo</p>
+      {user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
       <div className="flex-1 flex flex-col">
         <Header />
         <div className="flex-1 overflow-y-auto p-4">
@@ -71,7 +73,7 @@ function App() {
             </ProtectedLayout>
           }>
             <Route path="AdminSidebar" element={<AdminSidebar />} />
-            <Route path="AdminSidebar/RegisterTest" element={<RegisterTest />} />
+            <Route path="RegisterTest" element={<RegisterTest />} />
             <Route path="courses/*" element={
               <>
                 <CoursesList />

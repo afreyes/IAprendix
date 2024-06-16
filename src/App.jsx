@@ -44,7 +44,6 @@ const ProtectedLayout = ({ children }) => {
   return (
     <div className="flex h-screen">
       {user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
-      {user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
       <div className="flex-1 flex flex-col">
         <Header />
         <div className="flex-1 overflow-y-auto p-4">

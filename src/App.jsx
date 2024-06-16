@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { BrowserRouter, Routes, Route, useNavigate, Outlet } from "react-router-dom";
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useContext } from 'react';
 import AuthProvider, { AuthContext } from './contexts/AuthProvider';
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";

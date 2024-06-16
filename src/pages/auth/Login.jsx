@@ -50,7 +50,7 @@ const Login = () => {
       setError(null);
 
       if (responseQuery.data.user.role.name_role === 'admin') {
-        navigate("../AdminSidebar"); // Redirección al dashboard de admin
+        navigate("/admin/AdminSidebar"); // Redirección al dashboard de admin
       } else {
         navigate("../Dashboard"); // Redirección al dashboard de usuario
       }

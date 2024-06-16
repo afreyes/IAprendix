@@ -16,11 +16,14 @@ const AuthProvider = ({ children }) => {
   const login = (userData) => {
     setUser(userData);
     localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('jwt', userData.token); // Guarda el JWT en el almacenamiento local
+    localStorage.setItem('role', userData.role.name_role); 
   };
 
   const logout = () => {
     localStorage.removeItem('user');
     localStorage.removeItem('jwt');
+    localStorage.removeItem('role');
     setUser(null);
   };
 

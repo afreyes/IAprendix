@@ -15,6 +15,7 @@ import LandingPage from "./pages/LandingPage";
 import TestVAK from './components/TestVAK';
 import UserCourses from './components/UserCourses';
 import RegisterTest from './components/RegisterTest'; 
+import AdminDashboard from './pages/AdminDashboard';
 
 // Importamos los componentes de cursos y estudiantes
 import CoursesList from './components/courses/CoursesList';
@@ -28,8 +29,7 @@ import UserList from './components/student/UserList';
 const ProtectedLayout = ({ children }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  console.log("User protected: ", user);
+  console.log("nuevo user",user)
 
   useEffect(() => {
     if (!user) {
@@ -37,14 +37,13 @@ const ProtectedLayout = ({ children }) => {
     }
   }, [user, navigate]);
 
-  // if (!user || !user.data || !user.data.user || !user.data.user.role) {
-  if (!user || !user.role) {
-    console.log("Sin datos de usuario");
+  if (!user || !user.role.name_role) {
     return null; // Or some loading indicator
   }
 
   return (
     <div className="flex h-screen">
+      {user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
       {user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
       <div className="flex-1 flex flex-col">
         <Header />
@@ -74,8 +73,8 @@ function App() {
               <Outlet />
             </ProtectedLayout>
           }>
-            <Route path="AdminSidebar" element={<AdminSidebar />} />
-            <Route path="AdminSidebar/RegisterTest" element={<RegisterTest />} />
+            <Route path="AdminSidebar" element={<AdminDashboard />} />
+            <Route path="RegisterTest" element={<RegisterTest />} />
             <Route path="courses/*" element={
               <>
                 <CoursesList />

@@ -50,9 +50,12 @@ const Login = () => {
       setError(null);
 
       if (responseQuery.data.user.role.name_role === 'admin') {
+        console.log("entraste como admin",responseQuery.data.user.role.name_role)
         navigate("/admin/AdminSidebar"); // Redirección al dashboard de admin
-      } else {
-        navigate("../Dashboard"); // Redirección al dashboard de usuario
+      } 
+      else {
+        console.log("error ahora eres usuario") 
+        navigate("/dashboard"); // Redirección al dashboard de usuario
       }
     } catch (error) {
       setError(error.message);

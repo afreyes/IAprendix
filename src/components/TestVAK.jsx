@@ -1,16 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";   // useContext
+// import { AuthContext } from "../contexts/AuthProvider";
 
-const TestVAK = ({ }) => {
+const TestVAK = () => {
   const [test, setTest] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
+  // const { user } = useContext(AuthContext);
 
   // Traemos los datos de la API
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://nodebackend-vv0e.onrender.com/api/v1/test/find/6654ba1fa74117fcf6db9b3e`
+          // `https://nodebackend-vv0e.onrender.com/api/v1/test/find/${user.jwt}`
+         `https://nodebackend-vv0e.onrender.com/api/v1/test/find/6654ba1fa74117fcf6db9b3e`
         );
         const result = await response.json();
 

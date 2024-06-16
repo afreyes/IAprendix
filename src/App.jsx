@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { BrowserRouter, Routes, Route, useNavigate, Outlet } from "react-router-dom";
-import { useContext, useEffect, useContext } from 'react';
+import { useContext, useEffect} from 'react';
 import AuthProvider, { AuthContext } from './contexts/AuthProvider';
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
 import Dashboard from "./pages/Dashboard";
-import AdminSidebar from "./pages/AdminSidebar"; 
+import AdminSidebar from "./components/AdminSidebar"; 
 import Error404 from "./pages/auth/Error404";
 import Profile from "./components/Profile";
 import Logout from "./components/Logout";
@@ -27,7 +27,7 @@ import UserDelete from './components/student/UserDelete';
 import UserList from './components/student/UserList';
 
 const ProtectedLayout = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user } = useContext (AuthContext);
   const navigate = useNavigate();
   console.log("nuevo user",user)
 

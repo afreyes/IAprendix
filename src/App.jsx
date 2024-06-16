@@ -29,19 +29,23 @@ const ProtectedLayout = ({ children }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  console.log("User protected: ", user);
+
   useEffect(() => {
     if (!user) {
       navigate("/login");
     }
   }, [user, navigate]);
 
-  if (!user || !user.data || !user.data.user || !user.data.user.role) {
+  // if (!user || !user.data || !user.data.user || !user.data.user.role) {
+  if (!user || !user.role) {
+    console.log("Sin datos de usuario");
     return null; // Or some loading indicator
   }
 
   return (
     <div className="flex h-screen">
-      {user.data.user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
+      {user.role.name_role === 'admin' ? <AdminSidebar /> : <Sidebar />}
       <div className="flex-1 flex flex-col">
         <Header />
         <div className="flex-1 overflow-y-auto p-4">

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -14,7 +14,7 @@ const Login = () => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const { setUser, user, login } = useContext(AuthContext);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -46,15 +46,12 @@ const Login = () => {
       const responseQuery = await response.json();
       login(responseQuery.data.user); // Guardar la información del usuario en el contexto
       localStorage.setItem('jwt', responseQuery.data.token); // Guarda el JWT en el almacenamiento local
-      localStorage.setItem('role', responseQuery.data.user.role.name_role); // Guarda el rol del usuario en el almacenamiento local
+      localStorage.setItem('role', responseQuery.data.user.role); // Guarda el rol del usuario en el almacenamiento local
       setError(null);
 
       if (responseQuery.data.user.role.name_role === 'admin') {
-        console.log("entraste como admin",responseQuery.data.user.role.name_role)
         navigate("../AdminSidebar"); // Redirección al dashboard de admin
-      } 
-      else {
-        console.log("error ahora eres usuario") 
+      } else {
         navigate("../Dashboard"); // Redirección al dashboard de usuario
       }
     } catch (error) {
@@ -68,9 +65,9 @@ const Login = () => {
     className="min-h-screen flex items-center justify-center p-4"
     style={{ 
       backgroundImage: `url(${bgImage})`,
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center'
+      backgroundSize: 'cover', // Ajusta el tamaño del fondo a 'auto'
+      backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
+      backgroundPosition: 'center' // Centra la imagen en el div
     }} >
       <div className="bg-custom-blue bg-opacity-75 p-8 rounded-xl shadow-5xl w-full max-w-md">
         <img src={logo} alt="Logo del Proyecto" className="w-32 mx-auto mb-4" />

@@ -10,7 +10,7 @@ const Header = () => {
   const { user } = useContext(AuthContext); // Obtener datos del usuario desde el contexto
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-[8vh] border-b border-gray-600 p-4 flex items-center justify-between bg-custom-blue">
+    <header className="fixed top-0 left-0 right-0 h-[8vh] border-b p-4 flex items-center justify-between bg-custom-blue">
       {/* Contenedor vacío para el lado izquierdo del header */}
       <div className="flex items-center gap-4"></div>
       {/* Contenedor para la información del usuario en el lado derecho */}

@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { RiMailLine, RiLockLine, RiEyeLine, RiEyeOffLine } from "react-icons/ri";
 import { AuthContext } from "../../contexts/AuthProvider";
-import logo from "../../assets/image/IAprendix_logo.png";
+import logo from "../../assets/image/IAprendix_logo_transparente.png";
 import bgImage from '../../assets/image/BG-IA.jpg';
 
 const Login = () => {
@@ -50,11 +50,9 @@ const Login = () => {
       setError(null);
 
       if (responseQuery.data.user.role.name_role === 'admin') {
-        console.log("entraste como admin",responseQuery.data.user.role.name_role)
         navigate("/admin/AdminSidebar"); // Redirección al dashboard de admin
       } 
       else {
-        console.log("error ahora eres usuario") 
         navigate("/dashboard"); // Redirección al dashboard de usuario
       }
     } catch (error) {
@@ -69,14 +67,10 @@ const Login = () => {
     style={{ 
       backgroundImage: `url(${bgImage})`,
       backgroundSize: 'cover', // Ajusta el tamaño del fondo a 'auto'
-      backgroundRepeat: 'no-repeat', // Evita que la imagen se repita
       backgroundPosition: 'center' // Centra la imagen en el div
     }} >
       <div className="bg-custom-blue bg-opacity-75 p-8 rounded-xl shadow-5xl w-full max-w-md">
-        <img src={logo} alt="Logo del Proyecto" className="w-32 mx-auto mb-4" />
-        <h1 className="text-2xl text-center uppercase font-bold tracking-widest text-white mb-8">
-          Iniciar <span className="text-indigo-500">sesión</span>
-        </h1>
+      <img src={logo} alt="Logo del Proyecto" style={{ width: '250px' }} className="mx-auto mb-4" />
         <form className="mb-8" onSubmit={handleSubmit}>
           <div className="relative mb-4">
             <RiMailLine className="absolute top-1/2 transform -translate-y-1/2 left-3 text-indigo-500" />

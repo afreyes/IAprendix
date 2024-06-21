@@ -29,7 +29,6 @@ import UserList from './components/student/UserList';
 const ProtectedLayout = ({ children }) => {
   const { user } = useContext (AuthContext);
   const navigate = useNavigate();
-  console.log("nuevo user",user)
 
   useEffect(() => {
     if (!user) {
@@ -38,7 +37,7 @@ const ProtectedLayout = ({ children }) => {
   }, [user, navigate]);
 
   if (!user || !user.role.name_role) {
-    return null; // Or some loading indicator
+    return null; 
   }
 
   return (
@@ -66,7 +65,6 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* Nuevas rutas agregadas */}
           <Route path="/admin/*" element={
             <ProtectedLayout>
               <Outlet />
@@ -90,7 +88,6 @@ function App() {
               </>
             } />
           </Route>
-          {/* Rutas existentes */}
           <Route path="/dashboard" element={<ProtectedLayout><Dashboard /></ProtectedLayout>} />
           <Route path="/testvak" element={<ProtectedLayout><TestVAK /></ProtectedLayout>} />
           <Route path="/profile" element={<ProtectedLayout><Profile /></ProtectedLayout>} />

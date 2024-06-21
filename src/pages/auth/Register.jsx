@@ -65,7 +65,7 @@ const Register = () => {
       backgroundPosition: 'center' // Centra la imagen en el div
     }} >
       <div className="bg-custom-blue bg-opacity-75 p-8 rounded-xl shadow-2xl w-full max-w-md">
-        <h1 className="text-3xl text-center uppercase font-bold tracking-widest text-white mb-8">
+        <h1 className="text-2xl text-center uppercase font-bold tracking-widest text-white mb-8">
           Crear <span className="text-indigo-500">cuenta</span>
         </h1>
         {error && <div style={{ color: "red" }}>{error}</div>}

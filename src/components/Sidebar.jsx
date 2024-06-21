@@ -23,7 +23,7 @@ function Sidebar() {
       <div className={`xl:h-[100vh] fixed xl:static w-[80%] md:w-[40%] lg:w-[30%] xl:w-auto h-full top-0 bg-custom-blue p-6 flex flex-col justify-between z-50 ${showMenu ? "left-0" : "-left-full"} transition-all`}>
         <div className="flex items-center gap-4 mb-20">
           <img
-            src="/src/assets/image/logo.jpg"
+            src="/src/assets/image/IAprendix_logo_transparente.png"
             alt="Sidebar Logo"
             className="h-8 w-8 object-cover rounded-full" />
           <h1 className="text-2xl font-bold text-white">IAprendix</h1>

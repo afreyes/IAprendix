@@ -96,6 +96,13 @@ export const RegisterTest = () => {
   const handleAnswerSubmit = async (e) => {
     e.preventDefault();
     setError(null); // Reset any previous error
+  
+    // Ensure answerData contains valid data
+    if (!answerData.answer_question || !createdQuestion || !createdQuestion.id) {
+      setError("Datos incompletos. Asegúrate de que todos los campos estén llenos.");
+      return;
+    }
+  
     try {
       console.log("Enviando datos de la respuesta:", answerData); // Para depuración
       const response = await fetch("https://nodebackend-vv0e.onrender.com/api/v1/test/registerAnswerQuestion", {
@@ -105,24 +112,33 @@ export const RegisterTest = () => {
         },
         body: JSON.stringify(answerData),
       });
+  
       console.log("Respuesta recibida:", response); // Para depuración
+  
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || "Error en la respuesta del servidor");
       }
+  
       const data = await response.json();
       console.log("Respuesta creada:", data);
+  
+      // Reset form data
       setAnswerData({
         answer_question: "",
         question: createdQuestion.id,
         name_style: ""
       });
-      setCreatedQuestion(null); // Reset the created question to allow adding new questions
+  
+      // Reset the created question to allow adding new questions
+      setCreatedQuestion(null);
+  
     } catch (error) {
       console.error("Error al crear la respuesta:", error); // Para depuración
       setError(error.message);
     }
   };
+  
 
   return (
     <div>
